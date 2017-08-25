@@ -17,7 +17,7 @@ title: 个人博客
 email: lawson_y@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   personal blog
-baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl:  # the subpath of your site, e.g. /blog
 url: "https://linfengwenyou.github.io" # the base hostname & protocol for your site
 github_username:    linfengwenyou
 instagram_username: linfengwenyou

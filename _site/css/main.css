@@ -1,8 +1,8 @@
 @font-face {
   font-family: libretto-icons;
-  src: url(/blog/assets/fonts/libretto-icons/libretto-icons.eot);
+  src: url(/assets/fonts/libretto-icons/libretto-icons.eot);
   /* IE9 Compat Modes */
-  src: url(/blog/assets/fonts/libretto-icons/libretto-icons.woff) format("woff"), url(/blog/assets/fonts/libretto-icons/libretto-icons.ttf) format("truetype"), url(/blog/assets/fonts/libretto-icons/libretto-icons.svg#font_name) format("svg");
+  src: url(/assets/fonts/libretto-icons/libretto-icons.woff) format("woff"), url(/assets/fonts/libretto-icons/libretto-icons.ttf) format("truetype"), url(/assets/fonts/libretto-icons/libretto-icons.svg#font_name) format("svg");
   /* Legacy iOS */ }
 /**
  * Reset some basic elements
