@@ -1,4 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-08-25T16:42:58+08:00</updated><id>http://localhost:4000/</id><title type="html">lawson_y</title><subtitle>Welcome to my Block</subtitle><author><name>linfengwenyou</name></author><entry><title type="html">Hello Hydeout</title><link href="http://localhost:4000/2017/06/01/hello-hydeout.html" rel="alternate" type="text/html" title="Hello Hydeout" /><published>2017-06-01T00:00:00+08:00</published><updated>2017-06-01T00:00:00+08:00</updated><id>http://localhost:4000/2017/06/01/hello-hydeout</id><content type="html" xml:base="http://localhost:4000/2017/06/01/hello-hydeout.html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.5.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-08-25T17:39:54+08:00</updated><id>http://localhost:4000/</id><title type="html">lawson_y</title><subtitle>Welcome to my Block</subtitle><author><name>linfengwenyou</name></author><entry><title type="html">Svn</title><link href="http://localhost:4000/2017/08/25/svn.html" rel="alternate" type="text/html" title="Svn" /><published>2017-08-25T00:00:00+08:00</published><updated>2017-08-25T00:00:00+08:00</updated><id>http://localhost:4000/2017/08/25/svn</id><content type="html" xml:base="http://localhost:4000/2017/08/25/svn.html">&lt;h1 id=&quot;svn基本命令使用&quot;&gt;SVN基本命令使用&lt;/h1&gt;
+
+&lt;h3 id=&quot;1-下载&quot;&gt;1. 下载&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn checkout path
+svn co path         &lt;span class=&quot;c&quot;&gt;# 简写 &lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;2-添加新文件&quot;&gt;2. 添加新文件&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn add file        &lt;span class=&quot;c&quot;&gt;# 目录直接打目录名&lt;/span&gt;
+svn add .           &lt;span class=&quot;c&quot;&gt;# 会出问题，它把当前的文件夹也算进去了，svn不允许添加已经存在的内容&lt;/span&gt;
+svn add . --force   &lt;span class=&quot;c&quot;&gt;# 强制添加文件，不添加忽略的文件&lt;/span&gt;
+svn add &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;           &lt;span class=&quot;c&quot;&gt;# 会把所有文件加进去，忽略的文件也会，慎用 &lt;/span&gt;
+svn add &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; --force   &lt;span class=&quot;c&quot;&gt;# 强制吧所有文件添加到svn上包括忽略文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;3-将改动的文件提交到版本库&quot;&gt;3. 将改动的文件提交到版本库&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn commit -m “logmessage” &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;-N][—-no-unlock] PATH  如果选择了保持锁，就使用—-no-unlock开关
+svn ci -m “message” &lt;span class=&quot;c&quot;&gt;# 简写命令&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;4-从服务器版本库更新&quot;&gt;4. 从服务器版本库更新&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn update          &lt;span class=&quot;c&quot;&gt;# 所有文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;5-删除文件&quot;&gt;5. 删除文件：&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn delete 文件名    &lt;span class=&quot;c&quot;&gt;# 从svn上删除文件&lt;/span&gt;
+svn delete --keep-local 文件名         &lt;span class=&quot;c&quot;&gt;#从svn中删除，但不删除本地文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;6加锁解锁&quot;&gt;6.加锁／解锁&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn lock -m “锁描述信息” 文件名
+svn unlock 文件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;7-比较差异&quot;&gt;7. 比较差异&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn diff 文件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;8-查看文件或者目录状态--这个好用更加直观些&quot;&gt;8. 查看文件或者目录状态  【这个好用，更加直观些】&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn status
+svn st 目录／文件名       &lt;span class=&quot;c&quot;&gt;# 默认不写的话用来表示 . 当前目录&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;9-查看日志-方便实用&quot;&gt;9. 查看日志 【方便实用】&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn log 文件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;10-查看文件详细信息&quot;&gt;10. 查看文件详细信息&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn info 文件名/目录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;11-svn-帮助&quot;&gt;11. svn 帮助&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn &lt;span class=&quot;nb&quot;&gt;help&lt;/span&gt;                &lt;span class=&quot;c&quot;&gt;#查看所有帮助&lt;/span&gt;
+svn &lt;span class=&quot;nb&quot;&gt;help &lt;/span&gt;ci             &lt;span class=&quot;c&quot;&gt;#查看ci命令&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;12-发生冲突了解决后标记&quot;&gt;12. 发生冲突了，解决后标记&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn resolved 文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;附svn-ignore-pods文件用法&quot;&gt;附：svn ignore Pods文件用法&lt;/h1&gt;
+
+&lt;h2 id=&quot;结果被忽略的文件或文件夹在status中会展示为ignored标志并且是灰色的状态&quot;&gt;结果：被忽略的文件或文件夹在STATUS中会展示为Ignored标志，并且是灰色的状态&lt;/h2&gt;
+
+&lt;p&gt;准备，svn上建一个文件夹，并checkout到本地，在文件夹内建一个新的Xcode工程，添加了podfile文件，还没有进行pod操作&lt;/p&gt;
+
+&lt;p&gt;tips: 所有的多字符命令前面都是两个横杠，文本编辑器会调整成一个。。。。。。&lt;/p&gt;
+
+&lt;h3 id=&quot;1-将新工程提交到svn上&quot;&gt;1. 将新工程提交到svn上&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn add . --force   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;2-执行命令&quot;&gt;2. 执行命令&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pod update —-no-repo-update —-verbose  &lt;span class=&quot;c&quot;&gt;#会生成一个Pods文件夹&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;3-设置pods文件夹状态为忽略&quot;&gt;3. 设置Pods文件夹状态为忽略&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn propset svn:ignore -R Pods .       &lt;span class=&quot;c&quot;&gt;# -R代表递归设置  Pods 要设置的文件夹   . 代表当前目录&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;4-提交设置即可注意之后不可以使用svn-add-操作&quot;&gt;4. 提交设置即可【注意之后不可以使&lt;code class=&quot;highlighter-rouge&quot;&gt;用svn add *&lt;/code&gt;操作】&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn ci -m ‘忽略pods’文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;5-后续如果不小心使用了命令添加所有到svn上并且提交&quot;&gt;5. 后续如果不小心使用了命令：添加所有到svn上并且提交&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn add &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;  
+svn ci -m “我不应该提交这个操作的”
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;那么就需要移除Pods文件，重新操作下&lt;/p&gt;
+
+&lt;h3 id=&quot;6-如果是不小心使用了命令添加但没有提交&quot;&gt;6. 如果是不小心使用了命令：添加，但没有提交&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn add &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;可以通过命令恢复&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;svn delete —keep-local Pods     &lt;span class=&quot;c&quot;&gt;# 只从svn中忽略，而不删除文件&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>linfengwenyou</name></author><summary type="html">SVN基本命令使用</summary></entry><entry><title type="html">Hello Hydeout</title><link href="http://localhost:4000/2017/06/01/hello-hydeout.html" rel="alternate" type="text/html" title="Hello Hydeout" /><published>2017-06-01T00:00:00+08:00</published><updated>2017-06-01T00:00:00+08:00</updated><id>http://localhost:4000/2017/06/01/hello-hydeout</id><content type="html" xml:base="http://localhost:4000/2017/06/01/hello-hydeout.html">&lt;p&gt;Hydeout updates the original &lt;a href=&quot;https://github.com/poole/hyde&quot;&gt;Hyde&lt;/a&gt;
 theme for &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt; 3.x and adds new functionality.&lt;/p&gt;
 
 &lt;h3 id=&quot;keep-it-simple&quot;&gt;Keep It Simple&lt;/h3&gt;
@@ -832,43 +966,4 @@ theme. Hope this works for you!&lt;/p&gt;</content><author><name>linfengwenyou</
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Markup:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Title&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;*with*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;**Markdown**&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;</content><author><name>linfengwenyou</name></author><category term="css" /><category term="html" /><category term="title" /><summary type="html">Using Markdown in the title should have no adverse effect on the layout or functionality.</summary></entry><entry><title type="html">Markup: Text Readability Test</title><link href="http://localhost:4000/markup/2012/01/29/markup-text-readability.html" rel="alternate" type="text/html" title="Markup: Text Readability Test" /><published>2012-01-29T00:00:00+08:00</published><updated>2012-01-30T01:26:59+08:00</updated><id>http://localhost:4000/markup/2012/01/29/markup-text-readability</id><content type="html" xml:base="http://localhost:4000/markup/2012/01/29/markup-text-readability.html">&lt;p&gt;Portland in shoreditch Vice, labore typewriter pariatur hoodie fap sartorial Austin. Pinterest literally occupy Schlitz forage. Odio ad blue bottle vinyl, 90’s narwhal commodo bitters pour-over nostrud. Ugh est hashtag in, fingerstache adipisicing laboris esse Pinterest shabby chic Portland. Shoreditch bicycle rights anim, flexitarian laboris put a bird on it vinyl cupidatat narwhal. Hashtag artisan skateboard, flannel Bushwick nesciunt salvia aute fixie do plaid post-ironic dolor McSweeney’s. Cliche pour-over chambray nulla four loko skateboard sapiente hashtag.&lt;/p&gt;
-
-&lt;p&gt;Vero laborum commodo occupy. Semiotics voluptate mumblecore pug. Cosby sweater ullamco quinoa ennui assumenda, sapiente occupy delectus lo-fi. Ea fashion axe Marfa cillum aliquip. Retro Bushwick keytar cliche. Before they sold out sustainable gastropub Marfa readymade, ethical Williamsburg skateboard brunch qui consectetur gentrify semiotics. Mustache cillum irony, fingerstache magna pour-over keffiyeh tousled selfies.&lt;/p&gt;
-
-&lt;h2 id=&quot;cupidatat-90s-lo-fi-authentic-try-hard&quot;&gt;Cupidatat 90’s lo-fi authentic try-hard&lt;/h2&gt;
-
-&lt;p&gt;In pug Portland incididunt mlkshk put a bird on it vinyl quinoa. Terry Richardson shabby chic +1, scenester Tonx excepteur tempor fugiat voluptate fingerstache aliquip nisi next level. Farm-to-table hashtag Truffaut, Odd Future ex meggings gentrify single-origin coffee try-hard 90’s.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Sartorial hoodie&lt;/li&gt;
-  &lt;li&gt;Labore viral forage&lt;/li&gt;
-  &lt;li&gt;Tote bag selvage&lt;/li&gt;
-  &lt;li&gt;DIY exercitation et id ugh tumblr church-key&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Incididunt umami sriracha, ethical fugiat VHS ex assumenda yr irure direct trade. Marfa Truffaut bicycle rights, kitsch placeat Etsy kogi asymmetrical. Beard locavore flexitarian, kitsch photo booth hoodie plaid ethical readymade leggings yr.&lt;/p&gt;
-
-&lt;p&gt;Aesthetic odio dolore, meggings disrupt qui readymade stumptown brunch Terry Richardson pour-over gluten-free. Banksy american apparel in selfies, biodiesel flexitarian organic meh wolf quinoa gentrify banjo kogi. Readymade tofu ex, scenester dolor umami fingerstache occaecat fashion axe Carles jean shorts minim. Keffiyeh fashion axe nisi Godard mlkshk dolore. Lomo you probably haven’t heard of them eu non, Odd Future Truffaut pug keytar meggings McSweeney’s Pinterest cred. Etsy literally aute esse, eu bicycle rights qui meggings fanny pack. Gentrify leggings pug flannel duis.&lt;/p&gt;
-
-&lt;h2 id=&quot;forage-occaecat-cardigan-qui&quot;&gt;Forage occaecat cardigan qui&lt;/h2&gt;
-
-&lt;p&gt;Fashion axe hella gastropub lo-fi kogi 90’s aliquip +1 veniam delectus tousled. Cred sriracha locavore gastropub kale chips, iPhone mollit sartorial. Anim dolore 8-bit, pork belly dolor photo booth aute flannel small batch. Dolor disrupt ennui, tattooed whatever salvia Banksy sartorial roof party selfies raw denim sint meh pour-over. Ennui eu cardigan sint, gentrify iPhone cornhole.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Whatever velit occaecat quis deserunt gastropub, leggings elit tousled roof party 3 wolf moon kogi pug blue bottle ea. Fashion axe shabby chic Austin quinoa pickled laborum bitters next level, disrupt deep v accusamus non fingerstache.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Tote bag asymmetrical elit sunt. Occaecat authentic Marfa, hella McSweeney’s next level irure veniam master cleanse. Sed hoodie letterpress artisan wolf leggings, 3 wolf moon commodo ullamco. Anim occupy ea labore Terry Richardson. Tofu ex master cleanse in whatever pitchfork banh mi, occupy fugiat fanny pack Austin authentic. Magna fugiat 3 wolf moon, labore McSweeney’s sustainable vero consectetur. Gluten-free disrupt enim, aesthetic fugiat jean shorts trust fund keffiyeh magna try-hard.&lt;/p&gt;
-
-&lt;h2 id=&quot;hoodie-duis&quot;&gt;Hoodie Duis&lt;/h2&gt;
-
-&lt;p&gt;Actually salvia consectetur, hoodie duis lomo YOLO sunt sriracha. Aute pop-up brunch farm-to-table odio, salvia irure occaecat. Sriracha small batch literally skateboard. Echo Park nihil hoodie, aliquip forage artisan laboris. Trust fund reprehenderit nulla locavore. Stumptown raw denim kitsch, keffiyeh nulla twee dreamcatcher fanny pack ullamco 90’s pop-up est culpa farm-to-table. Selfies 8-bit do pug odio.&lt;/p&gt;
-
-&lt;h3 id=&quot;thundercats-ho&quot;&gt;Thundercats Ho!&lt;/h3&gt;
-
-&lt;p&gt;Fingerstache thundercats Williamsburg, deep v scenester Banksy ennui vinyl selfies mollit biodiesel duis odio pop-up. Banksy 3 wolf moon try-hard, sapiente enim stumptown deep v ad letterpress. Squid beard brunch, exercitation raw denim yr sint direct trade. Raw denim narwhal id, flannel DIY McSweeney’s seitan. Letterpress artisan bespoke accusamus, meggings laboris consequat Truffaut qui in seitan. Sustainable cornhole Schlitz, twee Cosby sweater banh mi deep v forage letterpress flannel whatever keffiyeh. Sartorial cred irure, semiotics ethical sed blue bottle nihil letterpress.&lt;/p&gt;
-
-&lt;p&gt;Occupy et selvage squid, pug brunch blog nesciunt hashtag mumblecore skateboard yr kogi. Ugh small batch swag four loko. Fap post-ironic qui tote bag farm-to-table american apparel scenester keffiyeh vero, swag non pour-over gentrify authentic pitchfork. Schlitz scenester lo-fi voluptate, tote bag irony bicycle rights pariatur vero Vice freegan wayfarers exercitation nisi shoreditch. Chambray tofu vero sed. Street art swag literally leggings, Cosby sweater mixtape PBR lomo Banksy non in pitchfork ennui McSweeney’s selfies. Odd Future Banksy non authentic.&lt;/p&gt;
-
-&lt;p&gt;Aliquip enim artisan dolor post-ironic. Pug tote bag Marfa, deserunt pour-over Portland wolf eu odio intelligentsia american apparel ugh ea. Sunt viral et, 3 wolf moon gastropub pug id. Id fashion axe est typewriter, mlkshk Portland art party aute brunch. Sint pork belly Cosby sweater, deep v mumblecore kitsch american apparel. Try-hard direct trade tumblr sint skateboard. Adipisicing bitters excepteur biodiesel, pickled gastropub aute veniam.&lt;/p&gt;</content><author><name>linfengwenyou</name></author><category term="sample post" /><category term="readability" /><category term="test" /><summary type="html">A large amount of sample text to test readability of a text heavy page.</summary></entry></feed>
+&lt;/div&gt;</content><author><name>linfengwenyou</name></author><category term="css" /><category term="html" /><category term="title" /><summary type="html">Using Markdown in the title should have no adverse effect on the layout or functionality.</summary></entry></feed>
