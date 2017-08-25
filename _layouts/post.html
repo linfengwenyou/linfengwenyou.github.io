@@ -2,36 +2,17 @@
 layout: default
 ---
 
-<header class="post-header">
-	<div>
-		<span>Posted on </span><span class="post-meta">{{ page.date | date: "%B %-d, %Y" }}</span>
-	</div>
-
-	<h1 class="post-title" itemprop="name headline">{{ page.title }}</h1>
+<header>
+  <h1 class="post-title">{{ page.title }}</h1>
 </header>
+<div class="content">
+  {% include post-meta.html post=page %}
 
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-	<div class="entry-content" itemprop="articleBody">
-		{{ content }}
-	</div>
-</article>
+  <div class="post-body">
+    {{ content }}
+    {% include post-tags.html post=page %}
+  </div>
 
-<div id="post-nav">
-	<div class="next">
-		{% if page.next.url %}
-		<a href="{{ site.baseurl }}{{ page.next.url }}">
-			<span>Next entry</span>
-			{{ page.next.title }}
-		</a>
-		{% endif %}
-	</div>
-
-	<div class="previous">
-		{% if page.previous.url %}
-		<a href="{{ site.baseurl }}{{ page.previous.url }}">
-			<span>Previous entry</span>
-			{{ page.previous.title }}
-		</a>
-		{% endif %}
-	</div>
+  {% include comments.html %}
+  {% include related_posts.html %}
 </div>

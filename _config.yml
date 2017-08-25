@@ -1,27 +1,27 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing these this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'jekyll serve'. If you change this file, please restart the server process.
+# Dependencies
+markdown:         kramdown
+highlighter:      rouge
 
-# Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: 个人博客
-email: lawson_y@gmail.com
-description: > # this means to ignore newlines until "baseurl:"
-  personal blog
-baseurl:  # the subpath of your site, e.g. /blog
-url: "https://linfengwenyou.github.io" # the base hostname & protocol for your site
-github_username:    linfengwenyou
-instagram_username: linfengwenyou
-twitter_username:   linfengwenyou
+# Setup
+title:            lawson_y
+tagline:          'Personal Blog'
+description:      "Welcome to my Block"
+url:              https://linfengwenyou.github.io/hydeout
+baseurl:          # the optional subpath of your site, e.g. "/blog"
 
-# Build settings
-markdown: kramdown
+author:
+  name:           'linfengwenyou'
+  url:            https://twitter.com/_LiuSong
+
+paginate:         5
+
+plugins:
+  - jekyll-feed
+  - jekyll-gist
+  - jekyll-paginate
+
+# Custom vars
+version:            3.4.1
+sidebar_home_link:  true
+github:
+  repo:             https://github.com/linfengwenyou
