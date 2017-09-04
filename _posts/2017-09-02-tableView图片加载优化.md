@@ -7,11 +7,11 @@
 
 
 
-#### 涉及到的技术点
+### 涉及到的技术点
 
 
 
-##### 别忘记初始化
+#### 别忘记初始化
 
 ````
  self.ops = [[NSMutableDictionary alloc] init];
@@ -30,7 +30,7 @@
 
 
 
-##### `json`数据源获取
+#### `json`数据源获取
 
 ```
 - (NSArray *)dataSource
@@ -44,7 +44,7 @@
 }
 ```
 
-##### 沙盒路径
+#### 沙盒路径
 
 ```
 
@@ -62,7 +62,7 @@
 
 
 
-##### `cell`配置
+####  `cell`配置
 
 ```
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -112,7 +112,7 @@
 
 
 
-##### 内存警告记得清除
+#### 内存警告记得清除
 
 ```
 - (void)didReceiveMemoryWarning
