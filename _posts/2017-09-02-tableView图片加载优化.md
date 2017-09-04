@@ -4,13 +4,7 @@
 * 频繁刷新，网络延迟【操作缓存（可变字典）】
 * 图片缓冲区(可变字典)【最后通过沙盒存储】
 * 沙盒存储
-
-
-
 ### 涉及到的技术点
-
-
-
 #### 别忘记初始化
 
 ````
@@ -27,11 +21,7 @@
     return _queue;
 }
 ```
-
-
-
-#### `json`数据源获取
-
+#### json数据源获取
 ```
 - (NSArray *)dataSource
 {
@@ -43,11 +33,9 @@
     return _dataSource;
 }
 ```
-
 #### 沙盒路径
 
 ```
-
 - (NSString *)getFilePathName:(NSDictionary *)tmpDict
 {
     // 写入沙盒
@@ -59,10 +47,7 @@
 }
 
 ```
-
-
-
-####  `cell`配置
+####  cell配置
 
 ```
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -109,9 +94,6 @@
     return cell;
 }
 ```
-
-
-
 #### 内存警告记得清除
 
 ```
