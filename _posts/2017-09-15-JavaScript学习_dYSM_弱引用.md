@@ -74,6 +74,24 @@ grep 'XX arm64' xxyy.crash			// 查看打印的地址,<>中的地址就是uuid�
 // 0x10009c000 - 0x10043bfff XINCHANGBank arm64  <3cc531cbf0f53262a2ea2798ccaa441c> 
 ```
 
+配置，首先找到`symbolicatecrash`
+
+```
+find /Applications/Xcode.app -name symbolicatecrash -type f
+```
+
+可以将`symbolicatecrash`，`dSYM`,`.crash`文件拷贝到桌面文件夹，然后执行命令
+
+```
+./symbolicatecrash 12.crash 12.dSYM > symbol.crash// 生成的崩溃文件，格式可以随便写
+
+// 如果出现错误 Error: "DEVELOPER_DIR" is not defined at ./symbolicatecrash line 69.
+// 则是没有配置，执行如下命令
+export DEVELOPER_DIR=/Applications/XCode.app/Contents/Developer // 如果想永久有效，就添加到 ~/.bash_profile
+```
+
+
+
 #### NSHashTable
 
 NSHashTable 可以用来做弱引用容器  使用NSMapTable作为delegate弱引用的集合再适合不过了，与使用NSProxy弱引用添加到数组或字典效果一致。
