@@ -82,7 +82,4 @@ NSHashTable 可以用来做弱引用容器  使用NSMapTable作为delegate弱引
 
 ```
 
-
-
-参考地址：http://www.cocoachina.com/ios/20150519/11809.html
-
+<a href="http://www.cocoachina.com/ios/20150519/11809.html" target="_blank">更多资料</a>
