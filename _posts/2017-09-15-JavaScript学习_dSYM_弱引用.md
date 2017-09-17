@@ -64,11 +64,11 @@ document.write(arr.sort(sortNumber))
 
 
 
-#### Dysm配置使用
+#### dSYM配置使用
 
 ```
 dwarfdump --uuid XX.app/XX			// 查看app的uuid
-dwarfdump --uuid XX.dysm			// 查看dysm的uuid
+dwarfdump --uuid XX.dSYM			// 查看dSYM的uuid
 
 grep 'XX arm64' xxyy.crash			// 查看打印的地址,<>中的地址就是uuid，需要保持与上面两个一样就可以解析符号信息了
 // 0x10009c000 - 0x10043bfff XINCHANGBank arm64  <3cc531cbf0f53262a2ea2798ccaa441c> 
