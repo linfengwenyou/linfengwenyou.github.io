@@ -23,6 +23,8 @@ call [self.view setBackgroundColor:[UIColor redColor]];
 
 ```
 expr (e)    常用于调试时修改变量的值
+eg:
+e a = 10;
 ```
 
 
@@ -55,7 +57,8 @@ bt		打印调用层级，可以用来回溯调用流程
 
 ```
 直接通过界面操作，或者使用br命令添加断点
-eg: br -s 
+eg: 
+br set -n main  # 对某个方法设置断点
 ```
 
 ##### 异常断点
@@ -70,7 +73,7 @@ eg: br -s
 
 ```
 # 格式为：
-- [name_of_the_class name_of_the_method:]
+- [name_of_the_class name_of_the_method:]		# 类方法或对象方法（+／-）
 eg:
 -[UINavigationItem setLeftBarButtonItem:]
 ```
@@ -92,9 +95,23 @@ po [[UIWindow keyWindow] _autolayoutTrace]
 
 ##### 观察断点
 
+> 可以在某个变量被写入/读取是暂停程序运行，相当于在setter和getter处打了断点
+
 ```
-watchPoint 配置
+# 1. 在xcode lldb调试时，手动设置watchpoint
+# 2. 命令操作
+watchpoint set variable -w read _abc4
+watchpoint set variable -w read_write _abc4
+
+eg:
+watchpoint set variable self->_infoModel			// 需要使用->进行指针操作
 ```
+
+> 当前arm和x86上，一次最多允许创建4个watchpoint，继续创建会提示问题
+
+<a><href="http://www.dreamingwish.com/article/lldb-usage-a.html" target="_blank">延伸阅读1</a>
+
+<a><href="http://blog.csdn.net/quanqinyang/article/details/51321338" target="_blank">延伸阅读2</a>
 
 
 
