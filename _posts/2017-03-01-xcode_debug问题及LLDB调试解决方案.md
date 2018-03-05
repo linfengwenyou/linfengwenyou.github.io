@@ -115,6 +115,15 @@ f 按浮点数格式显示变量。
 
 <a href="http://blog.csdn.net/yasi_xi/article/details/9263955" target="_blank">地址命令</a>
 
+#### 查看静态库符号表
+
+```
+nm -a /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation
+
+nm xxx.a | grep xxSymbol
+```
+
+
 
 #### 断点
 
