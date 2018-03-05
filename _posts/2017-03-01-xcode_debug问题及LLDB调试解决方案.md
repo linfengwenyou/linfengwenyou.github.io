@@ -327,6 +327,35 @@ br s -a address
 
 
 
+##### dis 查看方法的汇编指令
+
+```
+- (void)testAction1
+{
+	NSLog(@"%@",11529918837411557448UL);			// 断点
+}
+
+(lldb) dis
+9-13`-[ViewController testAction1]:
+    0x10ee2a7a0 <+0>:  pushq  %rbp
+    0x10ee2a7a1 <+1>:  movq   %rsp, %rbp
+    0x10ee2a7a4 <+4>:  subq   $0x10, %rsp
+    0x10ee2a7a8 <+8>:  leaq   0x4a99(%rip), %rax        ; @"%@"
+    0x10ee2a7af <+15>: movabsq $-0x5ffd7fe7ceffcfb8, %rcx ; imm = 0xA002801831003048 
+    0x10ee2a7b9 <+25>: movq   %rdi, -0x8(%rbp)
+    0x10ee2a7bd <+29>: movq   %rsi, -0x10(%rbp)
+->  0x10ee2a7c1 <+33>: movq   %rax, %rdi
+    0x10ee2a7c4 <+36>: movq   %rcx, %rsi
+    0x10ee2a7c7 <+39>: movb   $0x0, %al
+    0x10ee2a7c9 <+41>: callq  0x10ee2cf80               ; symbol stub for: NSLog
+    0x10ee2a7ce <+46>: addq   $0x10, %rsp
+    0x10ee2a7d2 <+50>: popq   %rbp
+    0x10ee2a7d3 <+51>: retq   
+    0x10ee2a7d4 <+52>: nopw   %cs:(%rax,%rax)
+```
+
+
+
 
 
 
