@@ -49,6 +49,72 @@ eg: image lookup --type UIImage
 bt		打印调用层级，可以用来回溯调用流程
 ```
 
+#### 查看地址信息
+
+```
+ // NSString *a = @"zzzzzzzzz";
+ p a	# 打印对象信息，同事打印出指针地址
+ p/t a  # 打印对象信息，使用二进制表示指针地址
+ p/u a  # 打印对象信息，使用十进制表示指针地址
+ 
+eg:
+    NSString *a = @"demotest";
+    NSString *b = [a mutableCopy];
+    NSString *c = [b copy];
+    
+(lldb) p a
+(__NSCFConstantString *) $0 = 0x000000010fbbd268 @"demotest"
+(lldb) p b
+(__NSCFString *) $1 = 0x000060000025db80 @"demotest"
+(lldb) p c
+(NSTaggedPointerString *) $2 = 0xa002801831003048 @"demotest"
+(lldb) p/u c
+(NSTaggedPointerString *) $3 = 11529918837411557448 @"demotest"	// 这个长整型，可以直接用来打印：NSLog(@"%@",11529918837411557448UL);  demotest
+```
+
+##### 为什么一串数字可以打印出demotest?
+
+<a href="http://www.cocoachina.com/ios/20150918/13449.html" target="_blank">资料</a>
+
+下面引用些内容
+
+> 对象在内存中是对齐的，它们的地址总是指针大小的整数倍，通常为16的倍数。对象指针是一个64位的整数，而为了对齐，一些位将永远是零。
+>
+> 为了存储优化内存节约，提升性能才加入NSTaggedPointer类型的。通过运行时来处理的方式。不能直接放到内存是 为了兼容不同架构体系。只能在运行时时才可以由系统优化为NSTaggedPointer类型。
+>
+> Tagged Pointer有一个简单的应用，那就是NSNumber。它使用60位来存储熟知。最低位置1为NSNumber的标志。在这个例子中，就可以存储任何所需内存小于60位的数值。
+
+
+
+>  优化体现点： 
+>
+> 从外部看Tagged Pointer很像一个对象。它能够响应消息，因为objc_msgSend可以识别Tagged Pointer.假设你调用integerValue，它将从那60位中提取数值并返回。这样，每访问一个对象，就省下了一次真正对象的内存分配，省下了一次间接取值的时间。同事引用计数可以是空指令，因为没有内存释放。对于常用的类，这将是一个巨大的性能提升。
+>
+> NSString长度可变，又可远远超过60位，为此对于哪些内存小于60位的字符串，它可以创建一个Tagged Pointer。其余的则放置在真正的NSString对象里。这样使得短字符串的性能得到明显的提升。
+
+
+
+```
+NSLog(@"%@",11529918837411557448UL);  
+// 打印出demotest
+```
+
+
+
+ ###### 格式展示如下
+
+```
+x 按十六进制格式显示变量。
+d 按十进制格式显示变量。
+u 按十六进制格式显示无符号整型。
+o 按八进制格式显示变量。
+t 按二进制格式显示变量。
+a 按十六进制格式显示变量。
+c 按字符格式显示变量。
+f 按浮点数格式显示变量。
+```
+
+<a href="http://blog.csdn.net/yasi_xi/article/details/9263955" target="_blank">地址命令</a>
 
 
 #### 断点
@@ -258,6 +324,10 @@ po [obj _ivarDescription]   // obj 为一个对象
 ```
 br s -a address
 ```
+
+
+
+
 
 
 
