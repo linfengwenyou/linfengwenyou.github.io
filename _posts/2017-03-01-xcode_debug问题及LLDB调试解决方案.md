@@ -123,6 +123,17 @@ nm -a /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation
 nm xxx.a | grep xxSymbol
 ```
 
+#### 查看方法调用顺序
+
+```
+call (void)instrumentObjcMessageSends(YES)
+
+// 之后，运行时发送的所有消息都会打印到tmp／msgSend-xxx文件中
+open /private/tmp
+```
+
+<a href="http://blog.csdn.net/songchunmin_/article/details/51452003" target="_blank">参见 _objc_msgForward函数做什么，直接调用有什么用</a>
+
 
 
 #### 断点
