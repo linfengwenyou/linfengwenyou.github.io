@@ -42,6 +42,25 @@ eg: image lookup --type UIImage
 
 
 
+```
+# 用来查看这个类型下所有的方法有地址
+image lookup -r -n UIView
+image lookup -r -n ManagerObject
+
+3 matches found in /Users/xxxx/Library/Developer/Xcode/DerivedData/DemoTest-axbuyyxpvsbuiogfwzvvyqazetha/Build/Products/Debug-iphonesimulator/DemoTest.app/DemoTest:
+        Address: DemoTest[0x0000000100001ec0] (DemoTest.__TEXT.__text + 1024)
+        Summary: DemoTest`-[ManagerObject setDemoStr:] at ManagerObject.m:12        Address: DemoTest[0x0000000100001f70] (DemoTest.__TEXT.__text + 1200)
+        Summary: DemoTest`-[ManagerObject .cxx_destruct] at ManagerObject.m:11        Address: DemoTest[0x0000000100001f40] (DemoTest.__TEXT.__text + 1152)
+        Summary: DemoTest`-[ManagerObject demoStr] at ManagerObject.h:13
+(lldb) 
+```
+
+
+
+
+
+
+
 #### 堆栈信息查看
 
 ```
@@ -383,6 +402,14 @@ call (void)instrumentObjcMessageSends(YES);
 
 // 之后在目录下查看运行时调用： open /private/tmp/msgSend-XXX
 ```
+
+
+
+##### get-task-allow
+
+> Code signing Entitlements中有一项很重要的key值，就是get-task-allow.
+>
+> 此值决定了app能否被Xcode调试。一般来说这个key值为空，默认为NO
 
 
 
