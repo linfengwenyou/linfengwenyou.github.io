@@ -191,8 +191,13 @@ eg:
 UIViewAlertForUnsatisfiableConstraints
 
 # 2. 卡住后在事件处操作,下面会打印出布局树【会有提示AMBIGUOUS（模棱两可的，模糊不清的）】，再配合异常信息几本就可以定位了
-po [[UIWindow keyWindow] _autolayoutTrace]
+po [[UIWindow keyWindow] _autolayoutTrace]  # 可以将其编入到断点中
 
+# 3. 命令查看有问题的视图
+e ((UIView*)0x7f88a8cc2050).backgroundColor = [UIColor redColor]
+
+# 4. 如果是隐藏的信息，那么改颜色也无法查到可以通过一下命令打印所有再找响应的控件
+pviews
 ```
 
 
