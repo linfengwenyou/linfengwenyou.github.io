@@ -37,7 +37,18 @@ $ top
 
 ##### 查看线程ID
 
-> 1. 通过命令查看【后续补充】
+> 1. 通过上面的日志打印可以看出线程id应该为71759，在这里我们打开断点【点击查看视图层级】。使用LLDB操作
+
+```
+(lldb) thread info
+thread #1: tid = 0x1184f, 0x000000010d028c2a libsystem_kernel.dylib`mach_msg_trap + 10, queue = 'com.apple.main-thread', stop reason = signal SIGSTOP
+```
+
+由上述信息可以看出tid为0x1184f，将其转换为10进制为：71759  正好符合操作。
+
+
+
+> 2. 通过命令查看【后续补充】
 
 ```
 # 会打印出不少信息，暂时打印这几个
@@ -50,19 +61,6 @@ sudo dtruss -ap 3936
 ....
 
 ```
-
-
-
-> 2. 通过上面的日志打印可以看出线程id应该为71759，在这里我们打开断点【点击查看视图层级】。使用LLDB操作
-
-```
-(lldb) thread info
-thread #1: tid = 0x1184f, 0x000000010d028c2a libsystem_kernel.dylib`mach_msg_trap + 10, queue = 'com.apple.main-thread', stop reason = signal SIGSTOP
-```
-
-
-
-由上述信息可以看出tid为0x1184f，将其转换为10进制为：71759  正好符合操作。
 
 
 
