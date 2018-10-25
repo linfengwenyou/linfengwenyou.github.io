@@ -17,7 +17,7 @@
 ##### 查看进程ID
 
 * 模拟器运行项目【方便查看】
-* 打开终端输入命令【删减了部分只留下用到的些信息】
+* 打开终端输入命令
 
 ```
 $ top 
@@ -27,7 +27,7 @@ $ top
 
 ![NSLog_top命令打印](https://linfengwenyou.github.io/images/2018-10-25-top_images.png)
 
-通过途中可以看出PIDwei 3639,此时查看下日志输出中进程ID匹配上
+通过途中可以看出PID为 3639,此时查看下日志输出中进程ID匹配上
 
 ```
 2018-10-25 15:28:50.670354+0800 DemoTestSlider[3639:71759] libMobileGestalt 
@@ -37,10 +37,11 @@ $ top
 
 ##### 查看线程ID
 
-> 1. 通过命令查看
+> 1. 通过命令查看【后续补充】
 
 ```
-sudo dtruss -ap 3639					# 会打印出不少信息，暂时打印这几个
+# 会打印出不少信息，暂时打印这几个
+sudo dtruss -ap 3936					
 	PID/THRD  RELATIVE  ELAPSD    CPU SYSCALL(args) 		 = return
  3936/0x143df:       460      86      0 __disable_threadsignal(0x1, 0x0, 0x0)		 = 0 0
  3936/0x14310:      1302      89      1 __disable_threadsignal(0x1, 0x0, 0x0)		 = 0 0
