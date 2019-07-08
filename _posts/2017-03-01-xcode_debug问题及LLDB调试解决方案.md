@@ -346,7 +346,7 @@ caflush   // 与[CATransaction flush] 功能一样
 _shortMethodDescription
 
 eg:
-po [ViewController _shotMethodDescription]
+po [ViewController _shortMethodDescription]
 ```
 
 
